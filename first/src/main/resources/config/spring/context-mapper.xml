@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!--데이터 조회해주는 것은 *-sql.xml의 경로에 가서 해줄 수 있다. 아까 datasource.xml에서 보내준 datasource라는 id로 보내준 것.-->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean"> 
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="mapperLocations" value="classpath:/mapper/**/*_SQL.xml" /> 
+	</bean>
+	<!--얘들이 이제 AbstractDAO로 가서 이용해준다. -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"> 
+		<constructor-arg index="0" ref="sqlSession"/> 
+	</bean>
+
+	
+</beans>

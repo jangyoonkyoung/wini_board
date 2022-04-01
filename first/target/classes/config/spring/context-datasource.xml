@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/jdbc 
+	http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+	
+<!-- 	mybatis에 연결해주는 역할 - dbcp이다 - 근데 자꾸 버전 변경해서 문제 -> dbcp2 라이브러리에서 확인하고 dbcp2로 변경해주었다.  -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"> 
+	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/> 
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/board"/> 
+		<property name="username" value="root"/> 
+		<property name="password" value="0000"/> 
+	</bean>
+</beans>
